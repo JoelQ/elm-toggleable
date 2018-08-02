@@ -26,7 +26,7 @@ use a zipper implementation instead such as
 
 # Toggling
 
-@docs toggle, open, close
+@docs toggle, toggleIf, open, close
 
 
 # Unwrapping
