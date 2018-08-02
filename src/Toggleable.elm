@@ -2,6 +2,7 @@ module Toggleable
     exposing
         ( Toggleable(..)
         , toggle
+        , toggleIf
         , open
         , close
         , unwrap
@@ -67,6 +68,21 @@ toggle toggleable =
 
         Closed value ->
             Open value
+
+
+{-| Only toggle if the given expression is True. The value inside the toggleable
+remains unchanged.
+
+    toggleIf String.isEmpty (Open "") -- Closed ""
+    toggleIf String.isEmpty (Open "hello") -- Open "hello"
+
+-}
+toggleIf : (a -> Bool) -> Toggleable a -> Toggleable a
+toggleIf function toggleable =
+    if function <| unwrap toggleable then
+        toggle toggleable
+    else
+        toggleable
 
 
 {-| Convert a any toggleable value to `Open`.

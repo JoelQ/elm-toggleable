@@ -31,7 +31,7 @@ suite =
                 \before ->
                     Toggleable.toggle before
                         |> Expect.notEqual before
-            , fuzz toggleable "Toggling twice changes is the same value" <|
+            , fuzz toggleable "Toggling twice is the same value" <|
                 \before ->
                     Toggleable.toggle (Toggleable.toggle before)
                         |> Expect.equal before
@@ -39,6 +39,27 @@ suite =
                 \before ->
                     Toggleable.unwrap (Toggleable.toggle before)
                         |> Expect.equal (Toggleable.unwrap before)
+            ]
+        , describe "Toggleable.toggleIf"
+            [ fuzz toggleable "Toggling once changes the value" <|
+                \before ->
+                    Toggleable.toggleIf (always True) before
+                        |> Expect.notEqual before
+            , fuzz toggleable "Toggling twice is the same value" <|
+                \before ->
+                    before
+                        |> Toggleable.toggleIf (always True)
+                        |> Toggleable.toggleIf (always True)
+                        |> Expect.equal before
+            , fuzz toggleable "Toggling does not change tagged value" <|
+                \before ->
+                    Toggleable.unwrap (Toggleable.toggleIf (always True) before)
+                        |> Expect.equal (Toggleable.unwrap before)
+            , fuzz toggleable "when the expression is false does not change" <|
+                \before ->
+                    before
+                        |> Toggleable.toggleIf (always False)
+                        |> Expect.equal before
             ]
         , describe "Toggleable.open"
             [ fuzz toggleable "Opening always results in an open toggle" <|
