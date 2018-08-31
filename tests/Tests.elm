@@ -1,4 +1,4 @@
-module Tests exposing (..)
+module Tests exposing (closed, open, suite, toggleable)
 
 import Expect exposing (Expectation)
 import Fuzz exposing (Fuzzer, int, list, string)
