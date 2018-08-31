@@ -3,7 +3,7 @@
     "name": "JoelQ/elm-toggleable",
     "summary": "Elm functions for working with toggleable UIs",
     "license": "MIT",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "exposed-modules": [
         "Toggleable"
     ],
@@ -12,6 +12,6 @@
         "elm/core": "1.0.0 <= v < 2.0.0"
     },
     "test-dependencies": {
-      "elm-explorations/test": "1.0.0 <= v < 2.0.0"
+        "elm-explorations/test": "1.0.0 <= v < 2.0.0"
     }
 }
