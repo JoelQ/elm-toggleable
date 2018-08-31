@@ -6,4 +6,4 @@ toggleable. See it in action in this [live example](https://ellie-app.com/kPBk4H
 
 ## License
 
-Copyright Joël Quenneville 2018. Licensed under the [MIT License](LICENSE.md).
+Copyright Joël Quenneville 2018. Licensed under the [MIT License](LICENSE).
